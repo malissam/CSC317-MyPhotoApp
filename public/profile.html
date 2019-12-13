@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+    
+    
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="index.html">Home</a>
+            <a class="active" href="../profile.html">Profile</a>
+            <a href="../login.html">Login</a>
+            <a href="../about.html">About</a>
+    
+          </div>      
+          <div class="slideshow-container">
+          
+                  <div class="search-container">
+                          <form action="/action_page.php">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit"><i class="fa fa-search"></i>
+                          </form>
+                        </div>
+          <div class="mySlides fade">
+            <img src="swirl.jpg" style="width:100%">
+            <div class="text">Caption Text</div>
+          </div>
+          
+          <div class="mySlides fade">
+            <img src="deadpool.jpg" style="width:100%">
+            <div class="text">Caption Two</div>
+          </div>
+          
+          <div class="mySlides fade">
+            <img src="nature.jpg" style="width:100%">
+            <div class="text">Caption Three</div>
+          </div>
+          
+          </div>
+          <br>
+          
+    
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+         <!---- is there a reason this cant be deleted??-->
+          <div style="text-align:center">
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+          </div>
+          <!--Want to delete these dots-->
+          <script>
+          var slideIndex = 0;
+          showSlides();
+          
+          function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3000); // Change image every 2 seconds
+          }
+          </script>
+          
+    </body>
+    </html>
+    
+    
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+
+
+<div class="container emp-profile">
+
+    <form method="post">
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="profile-img">
+
+                    <img src="deadpool.jpg">
+
+                    <div class="file btn btn-lg btn-primary">
+
+                        Change Photo
+
+                        <input type="file" name="file"/>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+            <div class="col-md-6">
+           
+                        <div class="profile-head">
+
+                            <h3>
+                                Username
+                            </h3>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+
+                        <div class="profile-work">
+                            <h3>Account Details</h3>
+                        </div>
+                        
+                        <fieldset> Username:</fieldset>
+                        <fieldset> Email:</fieldset>
+                        <fieldset> Joined:</fieldset>
+                        <fieldset> Gallary:</fieldset>
+
+                    </div>
+                </div>
+            </form>           
+        </div>
