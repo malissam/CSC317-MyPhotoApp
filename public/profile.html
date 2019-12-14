@@ -4,14 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
     
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <div class="topnav">
             <a href="index.html">Home</a>
             <a class="active" href="../profile.html">Profile</a>
             <a href="../login.html">Login</a>
-            <a href="../about.html">About</a>
+            <a style="float:right" href="../logout.html">Logout</a>
     
           </div>      
           <div class="slideshow-container">
@@ -39,9 +39,6 @@
           
           </div>
           <br>
-          
-    
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
          <!---- is there a reason this cant be deleted??-->
           <div style="text-align:center">
@@ -50,6 +47,16 @@
             <span class="dot"></span> 
           </div>
           <!--Want to delete these dots-->
+
+          <form METHOD="POST" action ='/controller/profile' class="profile">
+            <h1>Your Profile</h1> 
+            <fieldset>
+            <img class="pic" name="pic" src="deadpool.jpg"/>  
+            <label for="Username">Username:</label>
+            <Label name = "profile_username" type="text" id="profile_username"></Label>
+            </fieldset>
+        </form>
+
           <script>
           var slideIndex = 0;
           showSlides();
@@ -76,64 +83,6 @@
     </html>
     
     
-    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
 
+                
 
-<div class="container emp-profile">
-
-    <form method="post">
-
-        <div class="row">
-
-            <div class="col-md-4">
-
-                <div class="profile-img">
-
-                    <img src="deadpool.jpg">
-
-                    <div class="file btn btn-lg btn-primary">
-
-                        Change Photo
-
-                        <input type="file" name="file"/>
-
-                    </div>
-
-                </div>
-
-            </div>
-            
-            <div class="col-md-6">
-           
-                        <div class="profile-head">
-
-                            <h3>
-                                Username
-                            </h3>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-4">
-
-                        <div class="profile-work">
-                            <h3>Account Details</h3>
-                        </div>
-                        
-                        <fieldset> Username:</fieldset>
-                        <fieldset> Email:</fieldset>
-                        <fieldset> Joined:</fieldset>
-                        <fieldset> Gallary:</fieldset>
-
-                    </div>
-                </div>
-            </form>           
-        </div>
