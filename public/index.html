@@ -9,12 +9,11 @@
     <body>
         <div class="topnav">
             <a class="active" href="index.html">Home</a>
-            <a href="../profile.html">Profile</a>
-            <a href="../login.html">Login</a>
-            <a style="float:right" href="../logout.html">Logout</a>
+            <a href="../post.html">Post</a>
+            <a style="float:right" href="../login.html">Login</a>
     
-          </div>      
-          <div class="slideshow-container">
+        </div>      
+        <div class="slideshow-container">
           
                   <div class="search-container">
                           <form action="/action_page.php">
@@ -37,14 +36,10 @@
             <div class="text">Caption Three</div>
           </div>
           
-          </div>
-          <br>
+        </div>
+        <br>
           
-    
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
-
-
      <!---- is there a reason this cant be deleted??-->
       <div style="text-align:center">
         <span class="dot"></span> 
@@ -52,6 +47,12 @@
         <span class="dot"></span> 
       </div>
       <!--Want to delete these dots-->
+            <input class="theBIGsubmit" type="submit" value="SHOW IMAGES" onclick="showImages()">
+            <div id="pictureBOX"class="pictureContainer">
+
+            
+            </div>
+  
       <script>
       var slideIndex = 0;
       showSlides();
@@ -72,7 +73,36 @@
         dots[slideIndex-1].className += " active";
         setTimeout(showSlides, 3000); // Change image every 2 seconds
       }
-      </script>
+
+  function showImages(){
+ 
+  fetch("/controller/showPicture", {
+    method: 'GET'
+  })
+  .then((resp)=> resp.json())
+  .then(function(data) {
+    let images = data['images'];
+    //console.log(images)
+    for (i = 0; i < images.length; i++) {
+      let postBOX = document.createElement('div');
+      let img = document.createElement('img');
+      let commentBox = document.createElement('input');
+      postBOX.className = "displayPost";
+      img.style = 'width:200px;';
+      img.src = images[i];
+      postBOX.appendChild(img);
+      postBOX.appendChild(commentBox);
+      document.getElementById('pictureBOX').appendChild(postBOX);
+    }
+  })
+.catch(function(error)
+{
+console.log(error);
+})
+
+}
+
+</script>
       
 </body>
 </html>

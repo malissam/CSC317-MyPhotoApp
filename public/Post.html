@@ -1,28 +1,135 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
-
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+    
+    
+    </head>
+    <body>
         <div class="topnav">
             <a href="index.html">Home</a>
-            <a href="../profile.html">Profile</a>
-            <a href="../login.html">Login</a>
-            <a style="float:right" href="../logout.html">Logout</a>
+            <a class="active" href="../post.html">Post</a>
+            <a style="float:right" href="../login.html">Login</a>
     
           </div>      
+          <div class="slideshow-container">
+          
+                  <div class="search-container">
+                          <form action="/action_page.php">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit"><i class="fa fa-search"></i>
+                          </form>
+                        </div>
+          <div class="mySlides fade">
+            <img src="swirl.jpg" style="width:100%">
+            <div class="text">Caption Text</div>
+          </div>
+          
+          <div class="mySlides fade">
+            <img src="deadpool.jpg" style="width:100%">
+            <div class="text">Caption Two</div>
+          </div>
+          
+          <div class="mySlides fade">
+            <img src="nature.jpg" style="width:100%">
+            <div class="text">Caption Three</div>
+          </div>
+          
+          </div>
+          <br>
+          
+    
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+
+     <!---- is there a reason this cant be deleted??-->
+      <div style="text-align:center">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+      </div>
+      <!--Want to delete these dots-->
+
+      
+      <form METHOD="POST" ACTION="/controller/post" encType="multipart/form-data">
+        <h1>Post Image</h1>
+        <fieldset>
+            <label  for="Title">Title</label>
+        <br>
+            <input name="title" type="text" id="Title">
+        <br>
+            <label for="Description">Description</label>
+        <br>
+            <input name="description" type="text" id="Description">
+        <br>
+            <label for="Image">Image</label>
+        <br>
+            <input name="postedImage" type="file" id="Image" accept="image/*">
+        <br>
+            <label for="Acceptable">Accept Acceptable Use Policy for Image Upload</label>
+            <input type="checkbox" name="Acceptable" required="">
+        <br>
+            <input type="submit" value="submit" onclick="postValidation()">
+        </fieldset>
+      </form>
+
+      <script>
+
+      var slideIndex = 0;
+      showSlides();
+      
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 3000); // Change image every 2 seconds
+      }
+
+ 
+
+  function postValidation(){
+  var TitleRegex = /^([a-zA-Z0-9]){1,}$/;
+  var DescriptionRegex = /^([a-zA-Z0-9]){1,}/;
+  var PicRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|gif|svg)+$/
+  validTitle= document.getElementById('Title').value.match(TitleRegex);
+  validDescription= document.getElementById('Description').value.match(DescriptionRegex);
+  validPic = document.getElementById("Image").value.match(PicRegex);
+
+  if (validTitle == null) {   
+    console.log("nope");
+    document.getElementById('Title').style.borderColor = 'pink';
+  }
+
+  if (validDescription == null) { 
+      is_valid = false;  
+      console.log("nope");
+      document.getElementById('Description').style.borderColor = 'pink';
+    }
+  
+  if (validPic==null){
+  console.log('nope');
+  document.getElementById("Image").style.borderColor = "pink";
+  }
+  var UserPost = {Title: document.getElementById('Title').value,Description: document.getElementById('Description').value, Image: document.getElementById('Image').value};
+  console.log(UserPost);
+
+
+  }
+</script>
+      
 </body>
-
-    <fieldset witdth="50%">Title</fieldset>
-    <img src="nature.jpg" style="width:50%" class="center">
+</html>
 
 
-<form>
-    <fieldset>
-
-        <h7>By Username</h7>
-        <div>Description</div>
-                   
-    </fieldset>
-</form>

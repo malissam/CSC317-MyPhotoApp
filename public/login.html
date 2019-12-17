@@ -9,8 +9,8 @@
     <body>
         <div class="topnav">
             <a href="index.html">Home</a>
-            <a href="../profile.html">Profile</a>
-            <a  class="active" href="../login.html">Login</a>
+            <a href="../post.html">Post</a>
+            <a class="active"style="float:right" href="../login.html">Login</a>
          
     
           </div>      
@@ -103,7 +103,7 @@
         <br>
         <label for="Email">Email</label>
         <br>
-        <input name="email"  type="email" id="Email" email="">
+        <input name="email"  type="email" id="Email" >
         <br>
         <label for="Password">Password</label>
         <br>
@@ -143,6 +143,7 @@ function loginValidation(){
       console.log("nope");
       document.getElementById('password').style.borderColor = 'pink';
     }
+  console.log(document.cookie); 
 var UserLogin = {username: document.getElementById('username').value,password: document.getElementById('password').value};
 console.log(UserLogin);
 }
@@ -171,33 +172,8 @@ var UserRegistration = {username: document.getElementById('Username').value,pass
 console.log(UserRegistration);
 }
 
-function postValidation(){
-  var TitleRegex = /^([a-zA-Z0-9]){1,}$/;
-  var DescriptionRegex = /^([a-zA-Z0-9]){1,}/;
-  var PicRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|gif|svg)+$/
-  validTitle= document.getElementById('Title').value.match(TitleRegex);
-  validDescription= document.getElementById('Description').value.match(DescriptionRegex);
-  validPic = document.getElementById("Image").value.match(PicRegex);
 
-  if (validTitle == null) {   
-    console.log("nope");
-    document.getElementById('Title').style.borderColor = 'pink';
-  }
 
-  if (validDescription == null) { 
-      is_valid = false;  
-      console.log("nope");
-      document.getElementById('Description').style.borderColor = 'pink';
-    }
-  
-  if (validPic==null){
-  console.log('nope');
-  document.getElementById("Image").style.borderColor = "pink";
-  }
-var UserPost = {Title: document.getElementById('Title').value,Description: document.getElementById('Description').value, Image: document.getElementById('Image').value};
-console.log(UserPost);
-  }
-/**End JS from assignment 4 */
 
      </script>   
             

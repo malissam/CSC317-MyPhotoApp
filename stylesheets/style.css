@@ -32,7 +32,7 @@ a {
   /**End Top Nav**/
   
   /**Carousel Slide Show with Search Bar**/
-  * {box-sizing: border-box;}
+  /** {box-sizing: border-box;}*/
   body {font-family: Verdana, sans-serif;}
   .mySlides {display: none;}
   .mySlides {
@@ -135,4 +135,39 @@ fieldset{
 .pic{
   width:200px;
   height:200px;
+}
+
+.theBIGsubmit{
+ margin-left: 100px;
+}
+
+.pictureContainer{
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+   justify-content: center; 
+  justify-content: space-evenly; */
+
+  width: 800px;
+  margin: auto;
+  display: grid;
+  gap: 2px 2px;
+  justify-items: center;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(4, 200px);
+  grid-auto-columns: repeat(4, 200px);
+  grid-auto-rows: repeat(4, 200px);
+
+}
+
+.centerEverything{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.displayPost{
+  border-width: 5px;
+  border-color: dodgerblue;
+
 }
