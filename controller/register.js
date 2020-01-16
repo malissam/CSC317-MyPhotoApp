@@ -30,7 +30,7 @@ router.use(session({
 	secret: 'secret',
 	resave: true,
     saveUninitialized: true,
-    cookie:{expires:6000000}
+ //   cookie:{expires:6000000}
 }));
 
 var sessionChecker = (req, res, next) => {
@@ -52,9 +52,9 @@ router.get('/logout', (req, res) => {
 router.use(bodyParser.urlencoded({extended : true}));
 router.use(bodyParser.json());
 
-router.get('/', function(req, response) {
-	response.sendFile(path.join(__dirname + '/login.html'));
-});
+// router.get('/', function(req, response) {
+// 	response.sendFile(path.join(__dirname + '/login.html'));
+// });
 //end add for sessions 
 
 
@@ -71,7 +71,7 @@ router.post('/login',function(req,res)
         req.session.username = login;
         
         //res.cookie('login_status', req.session.loggedin) // options is optional
-        console.log("image posted")
+        res.redirect("../index.html")
         
         
         //end add for cookie
@@ -92,7 +92,7 @@ router.get('/home', function(req, response) {
 	}
 	response.end();
 });
-
+//end of login //
 // default options
 router.use(fileUpload());
 
@@ -104,7 +104,7 @@ router.post('/post',function(req,res,error)
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
       }
-    if(req.session.loggedin){
+    // if(req.session.loggedin){
      // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
       let sampleFile = req.files.postedImage;
       let photopath = '/public/pictures/'+sampleFile;
@@ -120,28 +120,28 @@ router.post('/post',function(req,res,error)
             if(error) {
                 res.send(error);
             } else {
-                res.send('File uploaded!');
+                res.redirect("../index.html");
 
             }
          });  
 });
-    }
+    // }
 });
-
 
 router.get('/showPicture',function(req,res)
 {
     var login = req.body.login_username;
     var password = req.body.login_password;
     
-    DB.query("SELECT pic_url FROM post;", function(error,results,fields) {
+    DB.query("SELECT * FROM post;", function(error,results,fields) {
         console.log(results.map(result => result.pic_url));
+        console.log(results.map(result => result.post_title));
+
         res.send({
-            'images': results.map(result => "pictures/" + result.pic_url)
+            'images': results.map(result => "pictures/" + result.pic_url),
+            'title':  results.map(result => result.post_title)
         })
     });
-    
 });
-
 
 module.exports = router;

@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
     
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     </head>
     <body>
         <div class="topnav">
@@ -48,16 +49,17 @@
       </div>
       <!--Want to delete these dots-->
       
-            <input class="theBIGsubmit" type="submit" value="SHOW IMAGES" onclick="showImages()">
-            <div id="pictureBOX"class="pictureContainer">
+      
+            <div id="pictureBOX" class="row pictureContainer">
 
             
             </div>
   
       <script>
       var slideIndex = 0;
-      showSlides();
       
+      showSlides();
+      showImages();
       function showSlides() {
         var i;
         var slides = document.getElementsByClassName("mySlides");
@@ -83,16 +85,27 @@
   .then((resp)=> resp.json())
   .then(function(data) {
     let images = data['images'];
+    let titles = data['title']
     //console.log(images)
     for (i = 0; i < images.length; i++) {
       let postBOX = document.createElement('div');
       let img = document.createElement('img');
       let commentBox = document.createElement('input');
-      postBOX.className = "displayPost";
-      img.style = 'width:200px;';
+      let card = document.createElement('div')
+      let card_body = document.createElement("div")
+      let card_title= document.createElement("h5")
+      card.className = "card p-3";
+      postBOX.className = "p-3 col-12 col-sm-6 col-lg-4";
+      card_body.className = "card-body";
+      card_title.className = "card-title";
+      card_title.innerHTML = titles[i]
+      img.className = "card-img-top";
       img.src = images[i];
-      postBOX.appendChild(img);
-      postBOX.appendChild(commentBox);
+      postBOX.appendChild(card)
+      card.appendChild(img);
+      card.appendChild(card_body);
+      card_body.appendChild(card_title);
+      card.appendChild(commentBox);
       document.getElementById('pictureBOX').appendChild(postBOX);
     }
   })
